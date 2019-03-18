@@ -360,7 +360,9 @@ void SpriteFramesEditor::_animation_name_edited() {
 	edited_anim = new_name;
 
 	undo_redo->commit_action();
+	print_error("finished_editing");
 }
+
 void SpriteFramesEditor::_animation_add() {
 
 	String name = "New Anim";
@@ -393,7 +395,9 @@ void SpriteFramesEditor::_animation_add() {
 
 	undo_redo->commit_action();
 	animations->grab_focus();
+	print_error("finished_adding");
 }
+
 void SpriteFramesEditor::_animation_remove() {
 	if (updating)
 		return;
@@ -415,6 +419,9 @@ void SpriteFramesEditor::_animation_remove() {
 	undo_redo->add_undo_method(this, "_update_library");
 
 	undo_redo->commit_action();
+
+	_update_library();
+	print_error("finished_removing");
 }
 
 void SpriteFramesEditor::_animation_loop_changed() {

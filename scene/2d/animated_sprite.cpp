@@ -129,6 +129,7 @@ void SpriteFrames::remove_frame(const StringName &p_anim, int p_idx) {
 	E->get().frames.remove(p_idx);
 	emit_changed();
 }
+
 void SpriteFrames::clear(const StringName &p_anim) {
 
 	Map<StringName, Anim>::Element *E = animations.find(p_anim);
@@ -150,6 +151,8 @@ void SpriteFrames::add_animation(const StringName &p_anim) {
 
 	animations[p_anim] = Anim();
 	animations[p_anim].normal_name = String(p_anim) + NORMAL_SUFFIX;
+	print_error("Adiciono no SpriteFrames");
+
 }
 
 bool SpriteFrames::has_animation(const StringName &p_anim) const {
@@ -157,12 +160,13 @@ bool SpriteFrames::has_animation(const StringName &p_anim) const {
 	return animations.has(p_anim);
 }
 void SpriteFrames::remove_animation(const StringName &p_anim) {
-
+	print_error("Removo no SpriteFrames");
+	
 	animations.erase(p_anim);
 }
 
 void SpriteFrames::rename_animation(const StringName &p_prev, const StringName &p_next) {
-
+	print_error("Rename no SpriteFrames");
 	ERR_FAIL_COND(!animations.has(p_prev));
 	ERR_FAIL_COND(animations.has(p_next));
 
